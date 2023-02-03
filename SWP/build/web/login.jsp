@@ -37,7 +37,7 @@
                 <div class="body_right-login" id="login">
                     <button class="body_right-btnlogin" type="submit">Đăng Nhập</button> <br>
                     <a href="#" class="body_right-forgotpass">Forgotten Password ?</a>
-                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:9999/swp_project/login-google&response_type=code
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:9999/SWP1/login-google&response_type=code
     &client_id=845236234675-gl7te8a81vmkokgdfjcf4s71g3jkll59.apps.googleusercontent.com&approval_prompt=force">Login With Google</a> 
                     <a href="https://www.facebook.com/dialog/oauth?client_id=2548676761950281&redirect_uri=http://localhost:9999/swp_project/home.jsp">Login Facebook</a>
                 </div>

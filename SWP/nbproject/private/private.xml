@@ -2,6 +2,29 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/model/Gallery.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/controller/LogOutServlet.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/controller/LoginGoogleServlet.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/dal/DBContext.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/web/home.jsp</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/model/Role.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/accessgoogle/common/Constants.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/model/Gender.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/model/Discount.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/model/OrderDetail.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/controller/ProductServlet.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/model/Size.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/model/Category.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/dal/UserDAO.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/controller/RegisterServlet.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/controller/LogInServlet.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/model/Status.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/model/Product.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/model/Order.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/model/User.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/controller/LoginFacebookServlet.java</file>
+            <file>file:/C:/Users/ASUS/Documents/GitHub/Project-SWP/SWP/src/java/model/Feedback.java</file>
+        </group>
     </open-files>
 </project-private>
