@@ -60,7 +60,7 @@ public class DAO extends DBContext {
     }
 
     void abc(){
-        
+        System.out.println("Truong dep zai");
     }
     
     public List<Product> getProductPresentation() {
