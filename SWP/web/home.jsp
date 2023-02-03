@@ -70,17 +70,38 @@
                         </div>
                     </div>
                     <div class="login-cart">
-                        <a href="./src/login.html" class="login_cart-item-link">
-                            <div class="login-cart_item">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
-                        </a>
-                        <a href="./src/cart.html" class="login_cart-item-link">
-                            <div class="login-cart_item">
-                                <i class="fa-solid fa-bag-shopping"></i>
-                            </div>
-                        </a>
-                    </div>
+                    <c:if test="${sessionScope.userNow.role_id==null}">
+
+                    <a href="login" class="login_cart-item-link">
+                    <div class="login-cart_item">
+                    <i class="fa-solid fa-key"></i>
+                     </div>
+                    </a>      
+
+                    </c:if>
+                    <c:if test="${sessionScope.userNow.role_id!=null}">
+                    <a href="#" class="login_cart-item-link" >
+                        <div class="login-cart_item">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                    </a>    
+
+                    </c:if>
+                    
+                    <a href="cart.html" class="login_cart-item-link">
+                        <div class="login-cart_item">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </div>
+                    </a>
+                    <c:if test="${sessionScope.userNow.role_id!=null}">
+                    <a href="logout" class="login_cart-item-link">
+                        <div class="login-cart_item">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </div>
+                    </a>    
+
+                    </c:if>
+                </div>
                 </div>
                 <!-- end header mid top -->
                 <!-- header mid bot -->
