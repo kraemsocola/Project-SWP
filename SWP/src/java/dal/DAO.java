@@ -59,6 +59,10 @@ public class DAO extends DBContext {
         return list;
     }
 
+    void abc(){
+        
+    }
+    
     public List<Product> getProductPresentation() {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT top 12 \n"
