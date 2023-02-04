@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.util.List;
 import model.Product;
+import model.Size;
 
 /**
  *
@@ -63,12 +64,24 @@ public class DetailServlet extends HttpServlet {
             throws ServletException, IOException {
        String id_raw = request.getParameter("id");
 //        String cid = request.getParameter("cid");
+//        String thumbnail = request.getParameter("thumbnail");
+//        String sizeid_raw = request.getParameter("sid");
+//        int sizeid = Integer.parseInt(sizeid_raw);
         int id = Integer.parseInt(id_raw);
         ProductDAO pd = new ProductDAO();
+        
         Product p;
 //        List<Product> list;
         p = pd.getProductById(id);
         request.setAttribute("prod", p);
+//        Product p2;
+//        p2 = pd.getProductValue(thumbnail, sizeid);
+//        request.setAttribute("pvalue", p2);
+        
+        List<Size> ls = pd.getAllSize();
+        
+        request.setAttribute("size", ls);
+        
 //            list = pd.randomRelative(id_raw, cid);
 //            request.setAttribute("relativeproducts", list);
 

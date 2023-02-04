@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Product;
+import model.Size;
 
 /**
  *
@@ -177,26 +178,15 @@ public class ProductDAO extends DBContext {
         }
         return null;
     }
-    
-    public Product getProductValue(int id) {
-        String sql = "SELECT [id]\n"
-                + "      ,[category_id]\n"
-                + "      ,[title]\n"
-                + "      ,[gender_id]\n"
-                + "      ,[price_in]\n"
-                + "      ,[price_out]\n"
-                + "      ,[discount_id]\n"
-                + "      ,[thumbnail]\n"
-                + "      ,[description]\n"
-                + "      ,[size_id]\n"
-                + "      ,[quantity]\n"
-                + "      ,[created_at]\n"
-                + "      ,[updated_at]\n"
-                + "  FROM [dbo].[Products]\n"
-                + "  where id = ?";
+
+    public Product getProductValue(String thumbnail, int sid) {
+        String sql = "select * from Sizes s join Products p\n"
+                + "on s.id = p.size_id\n"
+                + "where thumbnail ='?' and s.id=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, id);
+            st.setString(1, thumbnail);
+            st.setInt(2, sid);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 Product c = new Product();
@@ -219,6 +209,52 @@ public class ProductDAO extends DBContext {
             System.out.println(e);
         }
         return null;
+    }
+
+    public Size getValue() {
+        String sql = "SELECT [id]\n"
+                + "      ,[name]\n"
+                + "      ,[value]\n"
+                + "  FROM [SWP].[dbo].[Sizes]";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+
+                Size s = new Size();
+                s.setId(rs.getInt("sid"));
+                s.setName(rs.getString("name"));
+                s.setValue(rs.getInt("value"));
+                return s;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public List<Size> getAllSize() {
+        List<Size> ls = new ArrayList<>();
+        String sql = "SELECT [id]\n"
+                + "      ,[name]\n"
+                + "      ,[value]\n"
+                + "  FROM [SWP].[dbo].[Sizes]";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Size s = new Size();
+                s.setId(rs.getInt("id"));
+                s.setName(rs.getString("name"));
+                s.setValue(rs.getInt("value"));
+
+                ls.add(s);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return ls;
     }
 
     //xoa
@@ -852,9 +888,14 @@ public class ProductDAO extends DBContext {
     public static void main(String[] args) throws SQLException {
         ProductDAO d = new ProductDAO();
 //        d.getProductById(1);
-        System.out.println("thumbnail: "+d.getProductById(1).getThumbnail());
+        System.out.println("thumbnail: " + d.getProductById(1).getThumbnail());
 //        List<Product> ls = d.getAll();
 //        System.out.println(d.mostRevenueInXDay(0));
+        List<Size> ls = d.getAllSize();
+        System.out.println(ls);
+        for (Size l : ls) {
+            System.out.println(l.getValue());
+        }
     }
 
 }

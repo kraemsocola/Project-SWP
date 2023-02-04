@@ -193,9 +193,12 @@
                             <div class="info_products-right-item">
                                 <span class="info_products-right-title">${p.title}</span>
                             </div>
+
                             <div class="info_products-right-item">
                                 <span>Dung tích : </span>
-                                <span class="info_products-right-brand">10 50 100</span>
+                                <c:forEach items="${requestScope.size}" var="s">
+                                    <span class="info_products-right-brand">${s.value}</span>
+                                </c:forEach>
                             </div>
                             <div class="info_products-right-item">
                                 <span>Tem: </span>
@@ -217,7 +220,7 @@
                         <div class="info_products-right-item view_productsdetails">
                             <span class="info_products-right-title">Mô tả</span>
                             <span>${p.description}</span>
-                            
+
                         </div>
                         <hr class="decoration_top-right-products">
                         <div class="info_products-right-item view_policy">
@@ -551,8 +554,8 @@
         </div>
         <!-- end footer -->
     </body>
-    
-<!--     <script type="text/javascript">
-            importScripts('https://www.gstatic.com/recaptcha/releases/gEr-ODersURoIfof1hiDm7R5/recaptcha__en.js');
-        </script>-->
+
+    <!--     <script type="text/javascript">
+                importScripts('https://www.gstatic.com/recaptcha/releases/gEr-ODersURoIfof1hiDm7R5/recaptcha__en.js');
+            </script>-->
 </html>
