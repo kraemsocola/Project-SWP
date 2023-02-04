@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dal.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Product;
 
 /**
  *
@@ -57,7 +59,18 @@ public class DetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id_raw = request.getParameter("id");
+//        String cid = request.getParameter("cid");
+        int id = Integer.parseInt(id_raw);
+        ProductDAO pd = new ProductDAO();
+        Product p;
+//        List<Product> list;
+        p = pd.getProductById(id);
+        request.setAttribute("prod", p);
+//            list = pd.randomRelative(id_raw, cid);
+//            request.setAttribute("relativeproducts", list);
+
+        request.getRequestDispatcher("productdetail.jsp").forward(request, response);
     }
 
     /**
@@ -71,7 +84,17 @@ public class DetailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id_raw = request.getParameter("ID");
+        int id = Integer.parseInt(id_raw);
+        ProductDAO pd = new ProductDAO();
+        Product p;
+        try {
+            p = pd.getProductById(id);
+            request.setAttribute("prod", p);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        request.getRequestDispatcher("productdetail.jsp").forward(request, response);
     }
 
     /**
