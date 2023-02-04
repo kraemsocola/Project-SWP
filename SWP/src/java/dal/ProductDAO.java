@@ -177,6 +177,49 @@ public class ProductDAO extends DBContext {
         }
         return null;
     }
+    
+    public Product getProductValue(int id) {
+        String sql = "SELECT [id]\n"
+                + "      ,[category_id]\n"
+                + "      ,[title]\n"
+                + "      ,[gender_id]\n"
+                + "      ,[price_in]\n"
+                + "      ,[price_out]\n"
+                + "      ,[discount_id]\n"
+                + "      ,[thumbnail]\n"
+                + "      ,[description]\n"
+                + "      ,[size_id]\n"
+                + "      ,[quantity]\n"
+                + "      ,[created_at]\n"
+                + "      ,[updated_at]\n"
+                + "  FROM [dbo].[Products]\n"
+                + "  where id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Product c = new Product();
+                c.setId(rs.getInt("id"));
+                c.setCategory_id(rs.getInt("category_id"));
+                c.setTitle(rs.getString("title"));
+                c.setGender_id(rs.getInt("gender_id"));
+                c.setPrice_in(rs.getInt("price_in"));
+                c.setPrice_out(rs.getInt("price_out"));
+                c.setDiscount_id(rs.getInt("discount_id"));
+                c.setThumbnail(rs.getString("thumbnail"));
+                c.setDescription(rs.getString("description"));
+                c.setSize_id(rs.getInt("size_id"));
+                c.setQuantity(rs.getInt("quantity"));
+                c.setCreated_at(rs.getDate("created_at"));
+                c.setCreated_at(rs.getDate("updated_at"));
+                return c;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
 
     //xoa
 //    public void delete(String id) {

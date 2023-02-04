@@ -194,7 +194,7 @@
                                 <span class="info_products-right-title">${p.title}</span>
                             </div>
                             <div class="info_products-right-item">
-                                <span>Nồng độ: </span>
+                                <span>Dung tích : </span>
                                 <span class="info_products-right-brand">10 50 100</span>
                             </div>
                             <div class="info_products-right-item">
