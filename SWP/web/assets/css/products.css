@@ -92,7 +92,7 @@
 .info_producst-right-add{
     width: 200px;
     height: 50px;
-    background-color: #72af5c;
+    background-color: #000000;
     color: white;
     border-radius: 6px;
     cursor: pointer;
@@ -280,3 +280,123 @@ border: solid 2px rgba(255, 255, 255, 0);
     display: flex;
     justify-content: space-between;
 }
+
+
+/*.quantity-area {margin-bottom:15px;}
+.quantity-area input#quantity {
+	background: #fff;
+	font-weight: 600;
+	height: 32px;
+	padding: 0;
+	text-align: center;
+	width: 70px;
+	border: 1px solid #f3f4f4;
+	border-left: none;
+	border-right: none;
+	border-radius: 1px;
+	float: left;
+	-webkit-appearance: none;
+}
+.quantity-area input.qty-btn {
+	float: left;
+	background: #f3f4f4;
+	border: solid 1px #f3f4f4;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 16px;
+	outline: none;
+	height: 32px;
+	width: 32px;
+	text-align: center;
+	border-radius: 0;
+}
+.table-cart .item .right .item-quan .qty-click button.qty-btn:focus {outline: none;}
+#cartformpage .table-cart .item .right .item-quan .qty-click button.qty-btn {
+	background: #fff;
+	font-weight: 500;
+	font-size: 14px;
+	height: 25px;
+	padding: 0;
+	text-align: center;
+	width: 25px;
+	border: 1px solid #f3f4f4;
+	border-radius: 0;
+	float: left;
+	-webkit-appearance: none;
+	background: #f3f4f4;
+}
+.quantity-area input.qty-btn {
+	float: left;
+	background: #f3f4f4;
+	border: solid 1px #f3f4f4;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 16px;
+	outline: none;
+	height: 32px;
+	width: 32px;
+	text-align: center;
+	border-radius: 0;
+}
+#cartformpage .table-cart .item .right .item-quan .qty-click button.qty-btn {
+	background: #fff;
+	font-weight: 500;
+	font-size: 14px;
+	height: 25px;
+	padding: 0;
+	text-align: center;
+	width: 25px;
+	border: 1px solid #f3f4f4;
+	border-radius: 0;
+	float: left;
+	-webkit-appearance: none;
+	background: #f3f4f4;
+}
+#cartformpage .table-cart .item .right .item-quan .qty-click button.qtyplus.qty-btn{border-left: none;}
+#cartformpage .table-cart .item .right .item-quan .qty-click button.qtyminus.qty-btn{border-right: none;}
+
+
+button.btn-addtocart:before {
+    background-color: #000000;
+}
+
+button.btn-addtocart {
+    margin-right: 15px;
+    border: 1px solid #000000;
+}
+.button:before {
+	position: absolute;
+	content: '';
+	display: block;
+	left: -2px;
+	top: 0;
+	right: -2px;
+	bottom: 0;
+	-webkit-transform: scale(1, 1);
+	transform: scale(1, 1);
+	-webkit-transform-origin: left center;
+	transform-origin: left center;
+	z-index: -1;
+	background-color: #323232;
+	-webkit-transition: -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+	transition: -webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+	transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+	transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86),-webkit-transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.button:hover {color:#252a2b;}
+.button:hover:before {
+	-webkit-transform-origin: right center;
+	transform-origin: right center;
+	-webkit-transform: scale(0, 1);
+	transform: scale(0, 1);
+}
+a.btn-check, button.buy-now, button.btn-addtocart {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: none;
+    padding: 14px 15px;
+    line-height: 22px;
+    width: 100%;
+    margin-bottom: 15px;
+}*/
