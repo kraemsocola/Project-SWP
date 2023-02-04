@@ -20,7 +20,7 @@ import model.Product;
  *
  * @author hp
  */
-@WebServlet(name="ProductServlet", urlPatterns={"/ProductServlet"})
+@WebServlet(name="ProductServlet", urlPatterns={"/home"})
 public class ProductServlet extends HttpServlet {
    
     /** 

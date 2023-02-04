@@ -449,10 +449,7 @@
                      
                     </c:forEach>
                     
-                           
-                              <p > ${requestScope.name} </p>
-                     <p > ${requestScope.id} </p>
-                     <p > ${requestScope.email} </p>
+                    
                     
                 </div>
              <div class="body_info">
