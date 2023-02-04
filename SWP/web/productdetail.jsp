@@ -216,11 +216,8 @@
                         <hr class="decoration_top-right-products">
                         <div class="info_products-right-item view_productsdetails">
                             <span class="info_products-right-title">Mô tả</span>
-                            <span>Chất liệu: Nhựa PVC</span>
-                            <span>Chiều cao: 58cm</span>
-                            <span>LED: Không</span>
-                            <span>Xuất xứ: Việt Nam</span>
-                            <span>Hỗ trợ tư vấn sản phẩm: 0123456789 / 0987654321</span>
+                            <span>${p.description}</span>
+                            
                         </div>
                         <hr class="decoration_top-right-products">
                         <div class="info_products-right-item view_policy">
