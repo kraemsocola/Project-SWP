@@ -345,7 +345,7 @@
                                 </a>
                                 <div class="describe_products">
                                     <div class="ratings_products">
-                                        <span>${rp.title}}</span>
+                                        <span>${rp.title}</span>
                                         <span>
                                             <i class="fa-solid fa-star icon_star"></i>
                                             <i class="fa-solid fa-star icon_star"></i>

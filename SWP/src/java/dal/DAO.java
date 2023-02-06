@@ -59,27 +59,28 @@ public class DAO extends DBContext {
         return list;
     }
 
-    void abc(){
+    void abc() {
         System.out.println("Truong khong dep zai");
     }
-    
+
     public List<Product> getProductPresentation() {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT top 12 \n"
-                + "      [title]\n"
-                + "      ,min(price_out) as price\n"
-                + "      ,[thumbnail]\n"
-                + "  FROM [SWP].[dbo].[Products]\n"
-                + "  group by \n"
-                + "      [title]\n"
-                + "      ,[thumbnail]";
+        String sql = "  SELECT top 12		\n"
+                + "                     [title], [gender_id]\n"
+                + "                     ,min(price_out) as price\n"
+                + "                    ,[thumbnail]\n"
+                + "                FROM [SWP].[dbo].[Products]\n"
+                + "                group by \n"
+                + "                      [title]\n"
+                + "                    ,[thumbnail], gender_id";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Product c = new Product();
+                c.setGender_id(rs.getInt("gender_id"));
                 c.setTitle(rs.getString("title"));
-                c.setPrice_out(rs.getInt("price"));            
+                c.setPrice_out(rs.getInt("price"));
                 c.setThumbnail(rs.getString("thumbnail"));
                 list.add(c);
             }
