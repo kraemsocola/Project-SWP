@@ -173,6 +173,10 @@
 
         <!-- body -->
         <c:set var="p" value="${requestScope.prod}" />
+<!--        <form action="pdetail" method="post" id="myform">
+            <input type="hidden" name="cid" value="${p.category_id}" readonly="readonly" />
+        </form>-->
+        
         <div id="body">
             <div class="body_container">
                 <div class="body_container-item view_infoproducts">
@@ -202,7 +206,7 @@
                             </div>
                             <div class="info_products-right-item">
                                 <span>Tem: </span>
-                                <span class="info_products-right-brand">Giay, Kim Loai</span>
+                                <span class="info_products-right-brand"> Giấy <input type="checkbox" name="temGiay" value=""/> Kim loại <input type="checkbox" name="temGiay" value=""/> </span>
                             </div>
                             <div class="info_products-right-item">
                                 <span class="info_products-right-price">${p.price_out }đ</span> <br>
@@ -300,15 +304,7 @@
                         </div>
                         <div class="products_detail" id="product_contentdetail">
                             <p class="products_detai-item">
-                                Bộ sản phẩm đầy đủ y hình, có 3 khuôn mặt khác nhau để thay thế. <br>
-                                Sản phẩm đóng hộp đầy đủ , chắc chắn
-                            </p>
-                            <p>
-                                Uchiha Madara là ninja huyền thoại đứng đầu tộc Uchiha hùng mạnh đầy kiêu hãnh. Madara và những người anh em của hắn sinh ra trong thời kỳ chiến tranh dai dẳng giữa hai tộc Uchiha và Senju. 
-                                Từ khi còn rất trẻ, Madara đã rất mạnh và có thể chiến thằng các ninja lớn tuổi hơn của tộc Senju, khiến mọi người xem hắn là thiên tài. 
-                                Một lần, tình cờ Madara gặp một cấu bé trạc tuổi mình tên là Hashirama của tộc Senju. Cả hai nhanh chóng trở thành bạn và họ cùng nhau thi ai ném đá nhảy trên nước được xa hơn. 
-                                Cả hai đều không tiết lộ tộc của mình nhưng họ cùng dần khám phá ra thân phận của người kia. Và trên chiến trường họ sẽ phải giết nhau, cho dù giữa họ đã có một tình bạn đẹp. 
-                                Madara đã chọn đứng về gia tộc mình, chấm dứt tình bạn với Hashirama và sẵn sàng giết cậu.
+                                ${p.description}
                             </p>
                         </div>
                     </div>
@@ -341,106 +337,34 @@
                         Sản phẩm tương tự
                     </div>
                     <div class="products_same-child">
-                        <div class="products">
-                            <a href="./src/products.html">
-                                <img src="./assets/img/obito.jpg" alt="" class="img_products">
-                            </a>
-                            <div class="describe_products">
-                                <div class="ratings_products">
-                                    <span>Mô hình Obito</span>
-                                    <span>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                    </span>
-                                    <div>
-                                        <span class="info_price">100$</span>
-                                        <span class="oldprice">200$</span>
+                        
+                        <c:forEach items="${requestScope.relativeproducts}" var="rp">
+                            <div class="products">
+                                <a href="./src/products.html">
+                                    <img src="${rp.thumbnail}" alt="" class="img_products">
+                                </a>
+                                <div class="describe_products">
+                                    <div class="ratings_products">
+                                        <span>${rp.title}}</span>
+                                        <span>
+                                            <i class="fa-solid fa-star icon_star"></i>
+                                            <i class="fa-solid fa-star icon_star"></i>
+                                            <i class="fa-solid fa-star icon_star"></i>
+                                            <i class="fa-solid fa-star icon_star"></i>
+                                            <i class="fa-solid fa-star icon_star"></i>
+                                        </span>
+                                        <div>
+                                            <span class="info_price">${rp.price_out} đ</span>
+
+                                        </div>
+                                    </div>
+                                    <div class="add_like_products">
+                                        <i class="fa-regular fa-heart icon_heart"></i>
+                                        <button class="btn_deal-item"><i class="fa-solid fa-plus"></i></button>
                                     </div>
                                 </div>
-                                <div class="add_like_products">
-                                    <i class="fa-regular fa-heart icon_heart"></i>
-                                    <button class="btn_deal-item"><i class="fa-solid fa-plus"></i></button>
-                                </div>
                             </div>
-                        </div>
-                        <div class="products">
-                            <a href="./src/products.html">
-                                <img src="./assets/img/naruto1.jpg" alt="" class="img_products">
-                            </a>
-                            <div class="describe_products">
-                                <div class="ratings_products">
-                                    <span>Mô hình Naruto và Cửu Vĩ</span>
-                                    <span>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                    </span>
-                                    <div>
-                                        <span class="info_price">100$</span>
-                                        <span class="oldprice">200$</span>
-                                    </div>
-                                </div>
-                                <div class="add_like_products">
-                                    <i class="fa-regular fa-heart icon_heart"></i>
-                                    <button class="btn_deal-item"><i class="fa-solid fa-plus"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="products">
-                            <a href="./src/products.html">
-                                <img src="./assets/img/itachi.jpg" alt="" class="img_products">
-                            </a>
-                            <div class="describe_products">
-                                <div class="ratings_products">
-                                    <span>Mô hình Itachi Susano</span>
-                                    <span>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                    </span>
-                                    <div>
-                                        <span class="info_price">100$</span>
-                                        <span class="oldprice">200$</span>
-                                    </div>
-                                </div>
-                                <div class="add_like_products">
-                                    <i class="fa-regular fa-heart icon_heart"></i>
-                                    <button class="btn_deal-item"><i class="fa-solid fa-plus"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="products">
-                            <a href="./src/products.html">
-                                <img src="./assets/img/kakashi.jpg" alt="" class="img_products">
-                            </a>
-                            <div class="describe_products">
-                                <div class="ratings_products">
-                                    <span>Mô hình Kakashi</span>
-                                    <span>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                        <i class="fa-solid fa-star icon_star"></i>
-                                    </span>
-                                    <div>
-                                        <span class="info_price">100$</span>
-                                        <span class="oldprice">200$</span>
-                                    </div>
-                                </div>
-                                <div class="add_like_products">
-                                    <i class="fa-regular fa-heart icon_heart"></i>
-                                    <button class="btn_deal-item"><i class="fa-solid fa-plus"></i></button>
-                                </div>
-                            </div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>

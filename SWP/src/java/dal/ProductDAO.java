@@ -257,6 +257,56 @@ public class ProductDAO extends DBContext {
         return ls;
     }
 
+    //san pham lien quan
+    public List<Product> randomRelative(int id, int cid) throws SQLException {
+        ArrayList<Product> ls = new ArrayList<>();
+        try {
+            String sql = "SELECT \n"
+                    + "top(4) [id]\n"
+                    + "      ,[category_id]\n"
+                    + "      ,[title]\n"
+                    + "      ,[gender_id]\n"
+                    + "      ,[price_in]\n"
+                    + "      ,[price_out]\n"
+                    + "      ,[discount_id]\n"
+                    + "      ,[thumbnail]\n"
+                    + "      ,[description]\n"
+                    + "      ,[size_id]\n"
+                    + "      ,[quantity]\n"
+                    + "      ,[created_at]\n"
+                    + "      ,[updated_at]\n"
+                    + "  FROM [dbo].[Products]\n"
+                    + "  where id!=? and category_id=?\n"
+                    + "  order by NEWID()";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            st.setInt(2, cid);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                Product c = new Product();
+                c.setId(rs.getInt("id"));
+                c.setCategory_id(rs.getInt("category_id"));
+                c.setTitle(rs.getString("title"));
+                c.setGender_id(rs.getInt("gender_id"));
+                c.setPrice_in(rs.getInt("price_in"));
+                c.setPrice_out(rs.getInt("price_out"));
+                c.setDiscount_id(rs.getInt("discount_id"));
+                c.setThumbnail(rs.getString("thumbnail"));
+                c.setDescription(rs.getString("description"));
+                c.setSize_id(rs.getInt("size_id"));
+                c.setQuantity(rs.getInt("quantity"));
+                c.setCreated_at(rs.getDate("created_at"));
+                c.setCreated_at(rs.getDate("updated_at"));
+                ls.add(c);
+
+            }
+
+        } catch (SQLException e) {
+        }
+        return ls;
+    }
+
     //xoa
 //    public void delete(String id) {
 //        String sql = "Delete from [dbo].[Product]\n"
@@ -602,39 +652,6 @@ public class ProductDAO extends DBContext {
 //        return list;
 //    }
 //
-//    public List<Product> randomRelative(String id, String cid) throws SQLException {
-//        ArrayList<Product> ls = new ArrayList<>();
-//        try {
-//            String sql = "SELECT top (4) [ID]\n"
-//                    + "      ,[name]\n"
-//                    + "      ,[price]\n"
-//                    + "      ,[cid]\n"
-//                    + "      ,[image]\n"
-//                    + "      ,[describe]\n"
-//                    + "  FROM [PRJ301].[dbo].[Product]\n"
-//                    + "  where id!= ? and cid = ? \n"
-//                    + "  order by NEWID()";
-//            PreparedStatement st = connection.prepareStatement(sql);
-//            st.setString(1, id);
-//            st.setString(2, cid);
-//            ResultSet rs = st.executeQuery();
-//
-//            while (rs.next()) {
-//                Product c = new Product();
-//                c.setId(rs.getString("ID"));
-//                c.setName(rs.getString("name"));
-//                c.setPrice(rs.getInt("price"));
-//                c.setCid(rs.getInt("cid"));
-//                c.setDescribe(rs.getString("describe"));
-//                c.setImage(rs.getString("image"));
-//                ls.add(c);
-//
-//            }
-//
-//        } catch (SQLException e) {
-//        }
-//        return ls;
-//    }
 ////san pham moi dc add vao db
 //
 //    public List<Product> topNew() throws SQLException {

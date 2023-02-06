@@ -15,14 +15,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.util.List;
 import model.Product;
-import model.Size;
 
 /**
  *
  * @author asus
  */
-@WebServlet(name = "DetailServlet", urlPatterns = {"/pdetail"})
-public class DetailServlet extends HttpServlet {
+@WebServlet(name = "RelativeServlet", urlPatterns = {"/relative"})
+public class RelativeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +40,10 @@ public class DetailServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DetailServlet</title>");            
+            out.println("<title>Servlet RelativeServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DetailServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RelativeServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,40 +61,22 @@ public class DetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String id_raw = request.getParameter("id");
-        String cid_raw = request.getParameter("cid");
-//        String thumbnail = request.getParameter("thumbnail");
-//        String sizeid_raw = request.getParameter("sid");
-//        int sizeid = Integer.parseInt(sizeid_raw);
-        int id = Integer.parseInt(id_raw);
-        int cid = Integer.parseInt(cid_raw);
-        ProductDAO pd = new ProductDAO();
-        
-        Product p;
+//                String id_raw = request.getParameter("id");
+//        String cid_raw = request.getParameter("cid");
+//        int id = Integer.parseInt(id_raw);
+//        int cid = Integer.parseInt(cid_raw);
+//        ProductDAO p = new ProductDAO();
 //        List<Product> list;
-        p = pd.getProductById(id);
-        request.setAttribute("prod", p);
-//        Product p2;
-//        p2 = pd.getProductValue(thumbnail, sizeid);
-//        request.setAttribute("pvalue", p2);
-        
-        List<Size> ls = pd.getAllSize();
-        List<Product> list;
-        
-        request.setAttribute("size", ls);
-        try {
-            p = pd.getProductById(id);
-            request.setAttribute("prod", p);
-            list = pd.randomRelative(id, cid);
-            request.setAttribute("relativeproducts", list);
-        } catch (SQLException e) {
-        }
-        
-        
-//            list = pd.randomRelative(id_raw, cid);
+//
+//        try {
+//            list = p.randomRelative(id, cid);
 //            request.setAttribute("relativeproducts", list);
-
-        request.getRequestDispatcher("productdetail.jsp").forward(request, response);
+//            
+//        } catch (SQLException ex) {
+//            System.out.println("aaaa");
+//        }
+//
+//        request.getRequestDispatcher("productdetail.jsp").forward(request, response);
     }
 
     /**
@@ -109,40 +90,22 @@ public class DetailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id_raw = request.getParameter("id");
-        String cid_raw = request.getParameter("cid");
-//        String thumbnail = request.getParameter("thumbnail");
-//        String sizeid_raw = request.getParameter("sid");
-//        int sizeid = Integer.parseInt(sizeid_raw);
-        int id = Integer.parseInt(id_raw);
-        int cid = Integer.parseInt(cid_raw);
-        ProductDAO pd = new ProductDAO();
-        
-        Product p;
+//               String id_raw = request.getParameter("id");
+//        String cid_raw = request.getParameter("cid");
+//        int id = Integer.parseInt(id_raw);
+//        int cid = Integer.parseInt(cid_raw);
+//        ProductDAO p = new ProductDAO();
 //        List<Product> list;
-        p = pd.getProductById(id);
-        request.setAttribute("prod", p);
-//        Product p2;
-//        p2 = pd.getProductValue(thumbnail, sizeid);
-//        request.setAttribute("pvalue", p2);
-        
-        List<Size> ls = pd.getAllSize();
-        List<Product> list;
-        
-        request.setAttribute("size", ls);
-        try {
-            p = pd.getProductById(id);
-            request.setAttribute("prod", p);
-            list = pd.randomRelative(id, cid);
-            request.setAttribute("relativeproducts", list);
-        } catch (SQLException e) {
-        }
-        
-        
-//            list = pd.randomRelative(id_raw, cid);
+//
+//        try {
+//            list = p.randomRelative(id, cid);
 //            request.setAttribute("relativeproducts", list);
-
-        request.getRequestDispatcher("productdetail.jsp").forward(request, response);
+//            
+//        } catch (SQLException ex) {
+//            System.out.println("aaaa");
+//        }
+//
+//        request.getRequestDispatcher("productdetail.jsp").forward(request, response);
     }
 
     /**
