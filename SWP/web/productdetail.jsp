@@ -173,10 +173,10 @@
 
         <!-- body -->
         <c:set var="p" value="${requestScope.prod}" />
-<!--        <form action="pdetail" method="post" id="myform">
-            <input type="hidden" name="cid" value="${p.category_id}" readonly="readonly" />
-        </form>-->
-        
+        <!--        <form action="pdetail" method="post" id="myform">
+                    <input type="hidden" name="cid" value="${p.category_id}" readonly="readonly" />
+                </form>-->
+
         <div id="body">
             <div class="body_container">
                 <div class="body_container-item view_infoproducts">
@@ -201,7 +201,14 @@
                             <div class="info_products-right-item">
                                 <span>Dung tích : </span>
                                 <c:forEach items="${requestScope.size}" var="s">
-                                    <span class="info_products-right-brand">${s.value}</span>
+                                    <div class="select-swap">  
+                                        <div data-value="${s.value}" class="n-sd swatch-element 50ml  ">
+                                            <input class="variant-0" id="swatch-0-50ml" type="radio" name="option1" value="50ml" data-vhandle="50ml" checked="">
+                                            <label for="swatch-0-50ml" class="sd">
+                                                <span>${s.value}</span>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </c:forEach>
                             </div>
                             <div class="info_products-right-item">
@@ -337,7 +344,7 @@
                         Sản phẩm tương tự
                     </div>
                     <div class="products_same-child">
-                        
+
                         <c:forEach items="${requestScope.relativeproducts}" var="rp">
                             <div class="products">
                                 <a href="./src/products.html">
