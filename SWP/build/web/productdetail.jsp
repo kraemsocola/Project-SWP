@@ -205,8 +205,11 @@
                                 </c:forEach>
                             </div>
                             <div class="info_products-right-item">
-                                <span>Tem: </span>
-                                <span class="info_products-right-brand"> Giấy <input type="checkbox" name="temGiay" value=""/> Kim loại <input type="checkbox" name="temGiay" value=""/> </span>
+                                <span>Giới tính phù hợp:</span>
+                                
+                                <c:if test="${param.gid == 1}" > <span class="info_products-right-brand"> Nam </span> </c:if> 
+                                <c:if test="${param.gid == 2} " ><span class="info_products-right-brand"> Nữ </span></c:if> 
+                                <c:if test="${param.gid == 3} " ><span class="info_products-right-brand"> Unisex </span></c:if> 
                             </div>
                             <div class="info_products-right-item">
                                 <span class="info_products-right-price">${p.price_out }đ</span> <br>
