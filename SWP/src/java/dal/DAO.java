@@ -79,6 +79,7 @@ public class DAO extends DBContext {
             while (rs.next()) {
                 Product c = new Product();
                 c.setGender_id(rs.getInt("gender_id"));
+                c.setSize_id(1);
                 c.setTitle(rs.getString("title"));
                 c.setPrice_out(rs.getInt("price"));
                 c.setThumbnail(rs.getString("thumbnail"));

@@ -136,7 +136,7 @@ public class ProductDAO extends DBContext {
 //        }
 //        return c;
 //    }
-    public Product getProductByTitle(String title) {
+    public Product getProductByTitle(String title, int gid, int sid) {
         String sql = "SELECT [id]\n"
                 + "      ,[category_id]\n"
                 + "      ,[title]\n"
@@ -151,10 +151,56 @@ public class ProductDAO extends DBContext {
                 + "      ,[created_at]\n"
                 + "      ,[updated_at]\n"
                 + "  FROM [dbo].[Products]\n"
-                + "  where title = ?";
+                + "  where title = ? and gender_id=? and size_id=?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, title);
+            st.setInt(2, gid);
+            st.setInt(3, sid);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Product c = new Product();
+                c.setId(rs.getInt("id"));
+                c.setCategory_id(rs.getInt("category_id"));
+                c.setTitle(rs.getString("title"));
+                c.setGender_id(rs.getInt("gender_id"));
+                c.setPrice_in(rs.getInt("price_in"));
+                c.setPrice_out(rs.getInt("price_out"));
+                c.setDiscount_id(rs.getInt("discount_id"));
+                c.setThumbnail(rs.getString("thumbnail"));
+                c.setDescription(rs.getString("description"));
+                c.setSize_id(rs.getInt("size_id"));
+                c.setQuantity(rs.getInt("quantity"));
+                c.setCreated_at(rs.getDate("created_at"));
+                c.setCreated_at(rs.getDate("updated_at"));
+                return c;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public Product getProductBySize(String title, int sid) {
+        String sql = "SELECT [id]\n"
+                + "      ,[category_id]\n"
+                + "      ,[title]\n"
+                + "      ,[gender_id]\n"
+                + "      ,[price_in]\n"
+                + "      ,[price_out]\n"
+                + "      ,[discount_id]\n"
+                + "      ,[thumbnail]\n"
+                + "      ,[description]\n"
+                + "      ,[size_id]\n"
+                + "      ,[quantity]\n"
+                + "      ,[created_at]\n"
+                + "      ,[updated_at]\n"
+                + "  FROM [SWP].[dbo].[Products]\n"
+                + "  where title=? and size_id=?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, title);
+            st.setInt(2, sid);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 Product c = new Product();
@@ -276,11 +322,12 @@ public class ProductDAO extends DBContext {
                 + "      ,[created_at]\n"
                 + "      ,[updated_at]\n"
                 + "  FROM [dbo].[Products]\n"
-                + "  where title!=? and gender_id=?\n"
+                + "  where title!=? and gender_id=? and size_id =1\n"
                 + "  order by NEWID()";
         PreparedStatement st = connection.prepareStatement(sql);
-        st.setString(1,title);
+        st.setString(1, title);
         st.setInt(2, gid);
+       
         ResultSet rs = st.executeQuery();
 
         while (rs.next()) {
@@ -912,7 +959,7 @@ public class ProductDAO extends DBContext {
 //            System.out.println(l.getValue());
 //        }
 
-        System.out.println(d.getProductByTitle("Nước hoa Morra 2AM"));
+//        System.out.println(d.getProductByTitle("Nước hoa Morra 2AM"));
     }
 
 }

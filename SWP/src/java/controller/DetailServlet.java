@@ -41,7 +41,7 @@ public class DetailServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DetailServlet</title>");            
+            out.println("<title>Servlet DetailServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet DetailServlet at " + request.getContextPath() + "</h1>");
@@ -62,41 +62,43 @@ public class DetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String title = request.getParameter("title");
-       String gid_raw= request.getParameter("gid");
+        String title = request.getParameter("title");
+        String gid_raw = request.getParameter("gid");
+        String sid_raw = request.getParameter("sid");
+
 //        String cid_raw = request.getParameter("cid");
 //        String thumbnail = request.getParameter("thumbnail");
 //        String sizeid_raw = request.getParameter("sid");
 //        int sizeid = Integer.parseInt(sizeid_raw);
 //        int id = Integer.parseInt(id_raw);
 //        int cid = Integer.parseInt(cid_raw);
-int gid = Integer.parseInt(gid_raw);
+        int gid = Integer.parseInt(gid_raw);
+        int sid= Integer.parseInt(sid_raw);
         ProductDAO pd = new ProductDAO();
-        
+
         Product p;
 //        List<Product> list;
-        p = pd.getProductByTitle(title);
+        p = pd.getProductByTitle(title, gid, sid);
         request.setAttribute("prod", p);
 //        Product p2;
 //        p2 = pd.getProductValue(thumbnail, sizeid);
 //        request.setAttribute("pvalue", p2);
-        
+
         List<Size> ls = pd.getAllSize();
         List<Product> list;
-        
+
         request.setAttribute("size", ls);
         try {
-            p = pd.getProductByTitle(title);
-        request.setAttribute("prod", p);
+            p = pd.getProductByTitle(title, gid, sid);
+            request.setAttribute("prod", p);
             list = pd.randomRelative(title, gid);
             request.setAttribute("relativeproducts", list);
         } catch (SQLException e) {
         }
 //        
-        
+
 //            list = pd.randomRelative(id_raw, cid);
 //            request.setAttribute("relativeproducts", list);
-
         request.getRequestDispatcher("productdetail.jsp").forward(request, response);
     }
 
