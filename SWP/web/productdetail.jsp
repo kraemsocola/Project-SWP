@@ -208,8 +208,8 @@
                                 <span>Giới tính phù hợp:</span>
                                 
                                 <c:if test="${param.gid == 1}" > <span class="info_products-right-brand"> Nam </span> </c:if> 
-                                <c:if test="${param.gid == 2} " ><span class="info_products-right-brand"> Nữ </span></c:if> 
-                                <c:if test="${param.gid == 3} " ><span class="info_products-right-brand"> Unisex </span></c:if> 
+                                <c:if test="${param.gid == 2}" > <span class="info_products-right-brand"> Nữ </span></c:if> 
+                                <c:if test="${param.gid == 3}" > <span class="info_products-right-brand"> Unisex </span></c:if> 
                             </div>
                             <div class="info_products-right-item">
                                 <span class="info_products-right-price">${p.price_out }đ</span> <br>
@@ -252,9 +252,7 @@
                         <button class="products-item" id="products-item-cmt" onclick="op_comment()">
                             Nhận xét
                         </button>
-                        <button class="products-item" id="products-item-detail" onclick="op_detail()">
-                            Mô tả chi tiết
-                        </button>
+                        
                     </div>
                     <div class="products_contents">
                         <div class="products_cmt" id="product_contentcomment">
@@ -305,11 +303,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="products_detail" id="product_contentdetail">
-                            <p class="products_detai-item">
-                                ${p.description}
-                            </p>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="body_container-item user_ratingproducts">
