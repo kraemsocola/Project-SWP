@@ -422,7 +422,7 @@
                     <c:forEach items="${product}" var="p">
                         
                         <div class="products products_recommend">
-                        <a href="pdetail?title=${p.title}&gid=${p.gender_id}&sid=1">
+                        <a href="pdetail?title=${p.title}&gid=${p.gender_id}&sid=1&cid=${p.category_id}">
                             <img src="${p.thumbnail}" alt="" class="img_products">
                         </a>
                         <div class="describe_products">

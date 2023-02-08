@@ -65,14 +65,18 @@ public class DAO extends DBContext {
 
     public List<Product> getProductPresentation() {
         List<Product> list = new ArrayList<>();
-        String sql = "  SELECT top 12		\n"
-                + "                     [title], [gender_id]\n"
-                + "                     ,min(price_out) as price\n"
-                + "                    ,[thumbnail]\n"
-                + "                FROM [SWP].[dbo].[Products]\n"
-                + "                group by \n"
-                + "                      [title]\n"
-                + "                    ,[thumbnail], gender_id";
+        String sql = "  SELECT top 12	\n"
+                + "		[title],\n"
+                + "		category_id,\n"
+                + "		[gender_id]\n"
+                + "		,min(price_out) as price\n"
+                + "		,[thumbnail]\n"
+                + "	FROM [SWP].[dbo].[Products]\n"
+                + "	group by \n"
+                + "	[title]\n"
+                + "	, category_id\n"
+                + "	, gender_id\n"
+                + "	,[thumbnail]";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -80,6 +84,7 @@ public class DAO extends DBContext {
                 Product c = new Product();
                 c.setGender_id(rs.getInt("gender_id"));
                 c.setSize_id(1);
+                c.setCategory_id(rs.getInt("category_id"));
                 c.setTitle(rs.getString("title"));
                 c.setPrice_out(rs.getInt("price"));
                 c.setThumbnail(rs.getString("thumbnail"));

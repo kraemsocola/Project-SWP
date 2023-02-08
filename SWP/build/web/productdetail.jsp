@@ -17,7 +17,7 @@
         <link rel="icon" href="assets/img/small_logo1.png">
         <title>BOT STORE</title>
     </head>
-    <body>
+    <body >
         <!-- header -->
         <div id="header">
             <!-- header top -->
@@ -172,17 +172,35 @@
         <!-- end header -->
 
         <!-- body -->
+
         <c:set var="p" value="${requestScope.prod}" />
-<!--        <form action="pdetail" method="post" id="myform">
-            <input type="hidden" name="cid" value="${p.category_id}" readonly="readonly" />
-        </form>-->
-        
+        <!--        <form action="pdetail" method="post" id="myform">
+                    <input type="hidden" name="cid" value="${p.category_id}" readonly="readonly" />
+                </form>-->
+
         <div id="body">
+            <form action="pdetail" method="get">
+                <input type="hidden" value="${p.category_id}" name="cid"/>
+            </form>
+
             <div class="body_container">
-                <div class="body_container-item view_infoproducts">
-                    <div class="info_products-left">
-                        <div class="info_products-left-top">
-                            <img src="${p.thumbnail}" id="img_products_big">
+                <a href="listproduct?cid=${p.category_id}"> 
+                    <c:if test="${param.cid==1}" > <span class="info_products-right-brand"> The mood Collection </span> </c:if> 
+                    <c:if test="${param.cid==2}" > <span class="info_products-right-brand"> Summer Collection </span></c:if> 
+                    <c:if test="${param.cid==3}" > <span class="info_products-right-brand"> Morra x JVevermind 10ml </span></c:if> 
+                    <c:if test="${param.cid==4}" > <span class="info_products-right-brand"> 1st Collection </span></c:if>
+                    <c:if test="${param.cid==5}" > <span class="info_products-right-brand"> 2nd Collection </span></c:if>
+                    <c:if test="${param.cid==6}" > <span class="info_products-right-brand"> 3rd Collection </span></c:if>
+                    <c:if test="${param.cid==7}" > <span class="info_products-right-brand"> DECEMBER COMBACK </span></c:if>
+                    <c:if test="${param.cid==8}" > <span class="info_products-right-brand"> Nến thơm Elements Collection </span></c:if>
+                    <c:if test="${param.cid==9}" > <span class="info_products-right-brand"> Nến thơm 2nd Collection </span></c:if>
+                    <c:if test="${param.cid==10}" > <span class="info_products-right-brand"> Sữa tắm hương nước hoa Lumin Collection </span></c:if>
+                    <c:if test="${param.cid==11}" > <span class="info_products-right-brand"> Dưỡng thể </span></c:if>
+                </a>
+                    <div class="body_container-item view_infoproducts">
+                        <div class="info_products-left">
+                            <div class="info_products-left-top">
+                                <img src="${p.thumbnail}" id="img_products_big">
                         </div>
                         <div class="info_products-left-bot">
                             <img src="./assets/img/Uchiha Madara (2).jpg" class="img_products-small" onclick="img_product1()">
@@ -201,18 +219,24 @@
                             <div class="info_products-right-item">
                                 <span>Dung tích : </span>
                                 <c:forEach items="${requestScope.size}" var="s">
-                                    <a href="pdetail?title=${p.title}&gid=${p.gender_id}&sid=${s.id}"><span class="info_products-right-brand">${s.value}</span></a> 
+                                    <a href="pdetail?title=${p.title}&gid=${p.gender_id}&sid=${s.size_id}&cid=${p.category_id}">
+                                        <span class="info_products-right-brand">
+                                            <c:if test="${s.size_id == 1}" > <span class="info_products-right-brand"> 10 </span> </c:if> 
+                                            <c:if test="${s.size_id == 2}" > <span class="info_products-right-brand"> 50 </span></c:if> 
+                                            <c:if test="${s.size_id == 3}" > <span class="info_products-right-brand"> 100 </span></c:if> 
+                                            </span>
+                                        </a> 
                                 </c:forEach>
                             </div>
                             <div class="info_products-right-item">
                                 <span>Giới tính phù hợp:</span>
-                                
+
                                 <c:if test="${param.gid == 1}" > <span class="info_products-right-brand"> Nam </span> </c:if> 
                                 <c:if test="${param.gid == 2}" > <span class="info_products-right-brand"> Nữ </span></c:if> 
                                 <c:if test="${param.gid == 3}" > <span class="info_products-right-brand"> Unisex </span></c:if> 
-                            </div>
-                            <div class="info_products-right-item">
-                                <span class="info_products-right-price">${p.price_out }đ</span> <br>
+                                </div>
+                                <div class="info_products-right-item">
+                                    <span class="info_products-right-price">${p.price_out }đ</span> <br>
                                 <div class="quantity-area clearfix" style="margin-bottom: -25px" >
                                     <input type="button" value="-" onclick="minusQuantity()" class="qty-btn">
                                     <input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
@@ -252,7 +276,7 @@
                         <button class="products-item" id="products-item-cmt" onclick="op_comment()">
                             Nhận xét
                         </button>
-                        
+
                     </div>
                     <div class="products_contents">
                         <div class="products_cmt" id="product_contentcomment">
@@ -303,7 +327,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="body_container-item user_ratingproducts">
@@ -334,10 +358,10 @@
                         Sản phẩm tương tự
                     </div>
                     <div class="products_same-child">
-                        
+
                         <c:forEach items="${requestScope.relativeproducts}" var="rp">
                             <div class="products">
-                                <a href="pdetail?title=${p.title}&gid=${p.gender_id}&sid=1">
+                                <a href="pdetail?title=${rp.title}&gid=${rp.gender_id}&sid=1&cid=${rp.category_id}">
                                     <img src="${rp.thumbnail}" alt="" class="img_products">
                                 </a>
                                 <div class="describe_products">

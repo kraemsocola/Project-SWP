@@ -1,23 +1,27 @@
+<%-- 
+    Document   : allproducts
+    Created on : Jan 31, 2023, 4:10:53 PM
+    Author     : ASUS
+--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-
-<html lang="en">
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- <link rel="stylesheet" href="./assets/css/header_footer.css"> -->
+        <link rel="stylesheet" href="./assets/css/header_footer.css">
         <link rel="stylesheet" href="./assets/css/main.css">
         <link rel="stylesheet" href="./assets/css/products.css">
         <link rel="stylesheet" href="./assets/css/allproducts.css">
         <script type="text/javascript" language="javascript" src="./main.js"></script>
         <link rel="stylesheet" href="./assets/font/fontawesome-free-6.1.1/css/all.min.css">
-        <link rel="icon" href="assets/img/small_logo1.png">
+        <link rel="icon" href="./assets/img/small_logo1.png">
         <title>BOT STORE</title>
     </head>
-    <body >
+    <body>
         <!-- header -->
         <div id="header">
             <!-- header top -->
@@ -172,211 +176,30 @@
         <!-- end header -->
 
         <!-- body -->
-
-        <c:set var="p" value="${requestScope.prod}" />
-        <!--        <form action="pdetail" method="post" id="myform">
-                    <input type="hidden" name="cid" value="${p.category_id}" readonly="readonly" />
-                </form>-->
-
         <div id="body">
-            <form action="pdetail" method="get">
-                <input type="hidden" value="${p.category_id}" name="cid"/>
-            </form>
+            <div class="row">
+                <div class="body_container-search col-md-3">
 
-            <div class="body_container">
-                <a href="listproduct?cid=${p.category_id}"> 
-                    <c:if test="${param.cid==1}" > <span class="info_products-right-brand"> The mood Collection </span> </c:if> 
-                    <c:if test="${param.cid==2}" > <span class="info_products-right-brand"> Summer Collection </span></c:if> 
-                    <c:if test="${param.cid==3}" > <span class="info_products-right-brand"> Morra x JVevermind 10ml </span></c:if> 
-                    <c:if test="${param.cid==4}" > <span class="info_products-right-brand"> 1st Collection </span></c:if>
-                    <c:if test="${param.cid==5}" > <span class="info_products-right-brand"> 2nd Collection </span></c:if>
-                    <c:if test="${param.cid==6}" > <span class="info_products-right-brand"> 3rd Collection </span></c:if>
-                    <c:if test="${param.cid==7}" > <span class="info_products-right-brand"> DECEMBER COMBACK </span></c:if>
-                    <c:if test="${param.cid==8}" > <span class="info_products-right-brand"> Nến thơm Elements Collection </span></c:if>
-                    <c:if test="${param.cid==9}" > <span class="info_products-right-brand"> Nến thơm 2nd Collection </span></c:if>
-                    <c:if test="${param.cid==10}" > <span class="info_products-right-brand"> Sữa tắm hương nước hoa Lumin Collection </span></c:if>
-                    <c:if test="${param.cid==11}" > <span class="info_products-right-brand"> Dưỡng thể </span></c:if>
-                </a>
-                    <div class="body_container-item view_infoproducts">
-                        <div class="info_products-left">
-                            <div class="info_products-left-top">
-                                <img src="${p.thumbnail}" id="img_products_big">
-                        </div>
-                        <div class="info_products-left-bot">
-                            <img src="./assets/img/Uchiha Madara (2).jpg" class="img_products-small" onclick="img_product1()">
-                            <img src="./assets/img/Uchiha Madara (1).jpg" class="img_products-small" onclick="img_product2()">
-                            <img src="./assets/img/Uchiha Madara (3).jpg" class="img_products-small" onclick="img_product3()">
-                            <img src="./assets/img/Uchiha Madara (4).jpg" class="img_products-small" onclick="img_product4()">
-                            <img src="./assets/img/Uchiha Madara (5).jpg" class="img_products-small" onclick="img_product5()">
-                        </div>
-                    </div>
-                    <div class="info_products-right">
-                        <div class="info_product-right-child">
-                            <div class="info_products-right-item">
-                                <span class="info_products-right-title">${p.title}</span>
-                            </div>
-
-                            <div class="info_products-right-item">
-                                <span>Dung tích : </span>
-                                <c:forEach items="${requestScope.size}" var="s">
-                                    <a href="pdetail?title=${p.title}&gid=${p.gender_id}&sid=${s.size_id}&cid=${p.category_id}">
-                                        <span class="info_products-right-brand">
-                                            <c:if test="${s.size_id == 1}" > <span class="info_products-right-brand"> 10 </span> </c:if> 
-                                            <c:if test="${s.size_id == 2}" > <span class="info_products-right-brand"> 50 </span></c:if> 
-                                            <c:if test="${s.size_id == 3}" > <span class="info_products-right-brand"> 100 </span></c:if> 
-                                            </span>
-                                        </a> 
-                                </c:forEach>
-                            </div>
-                            <div class="info_products-right-item">
-                                <span>Giới tính phù hợp:</span>
-
-                                <c:if test="${param.gid == 1}" > <span class="info_products-right-brand"> Nam </span> </c:if> 
-                                <c:if test="${param.gid == 2}" > <span class="info_products-right-brand"> Nữ </span></c:if> 
-                                <c:if test="${param.gid == 3}" > <span class="info_products-right-brand"> Unisex </span></c:if> 
-                                </div>
-                                <div class="info_products-right-item">
-                                    <span class="info_products-right-price">${p.price_out }đ</span> <br>
-                                <div class="quantity-area clearfix" style="margin-bottom: -25px" >
-                                    <input type="button" value="-" onclick="minusQuantity()" class="qty-btn">
-                                    <input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
-                                    <input type="button" value="+" onclick="plusQuantity()" class="qty-btn">
-                                </div>
-                            </div>
-                            <div class="info_producst-right-add info_products-right-item" style="margin-top: 70px">
-                                <button type="button" id="add-to-cart" class="add-to-cartProduct button btn-addtocart addtocart-modal" name="add"><span>Thêm vào giỏ</span></button>
-                            </div>
-                        </div>
-                        <hr class="decoration_top-right-products">
-                        <div class="info_products-right-item view_productsdetails">
-                            <span class="info_products-right-title">Mô tả</span>
-                            <span>${p.description}</span>
-
-                        </div>
-                        <hr class="decoration_top-right-products">
-                        <div class="info_products-right-item view_policy">
-                            <span class="info_products-right-title">Chính sách hỗ trợ</span>
-                            <span>
-                                <i class="fa-solid fa-check icon_check-policy"></i>
-                                Đổi trả miễn phí nếu có lỗi từ nhà sản xuất
-                            </span>
-                            <span>
-                                <i class="fa-solid fa-check icon_check-policy"></i>
-                                Kiểm tra hàng trước khi thanh toán
-                            </span>
-                            <span>
-                                <i class="fa-solid fa-check icon_check-policy"></i>
-                                Miễn phí vận chuyển
-                            </span>
-                        </div>
-                    </div>
                 </div>
-                <div class="body_container-item products_cmt-detail">
-                    <div class="products_tab">
-                        <button class="products-item" id="products-item-cmt" onclick="op_comment()">
-                            Nhận xét
-                        </button>
+                <div class="body_container col-md-9">
+                    <div class="body_container-products" >
 
-                    </div>
-                    <div class="products_contents">
-                        <div class="products_cmt" id="product_contentcomment">
-                            <div class="products_cmt-item">
-                                <div class="products_cmt-top">
-                                    <img src="./assets/img/frog (5).png" class="img_avatar-user">
-                                    <div class="user_rated">
-                                        <span class="user_rated-name">Bùi Hạ Long</span>
-                                        <div>
-                                            <span>
-                                                <i class="fa-solid fa-star icon_star"></i>
-                                                <i class="fa-solid fa-star icon_star"></i>
-                                                <i class="fa-solid fa-star icon_star"></i>
-                                                <i class="fa-solid fa-star icon_star"></i>
-                                                <i class="fa-solid fa-star icon_star"></i>
-                                            </span>
-                                            <span class="user_rated-cmttime">1 tuần trước</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="products_cmt-bot">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi enim, voluptatum magni rem reprehenderit natus sit repellat amet aspernatur omnis culpa voluptate tempora. 
-                                        Consequuntur distinctio, labore reprehenderit inventore assumenda aliquam?
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="products_cmt-item">
-                                <div class="products_cmt-top">
-                                    <img src="./assets/img/frog (2).png" class="img_avatar-user">
-                                    <div class="user_rated">
-                                        <span class="user_rated-name">Đỗ Tú Linh</span>
-                                        <div>
-                                            <span>
-                                                <i class="fa-solid fa-star icon_star"></i>
-                                                <i class="fa-regular fa-star icon_star"></i>
-                                                <i class="fa-regular fa-star icon_star"></i>
-                                                <i class="fa-regular fa-star icon_star"></i>
-                                                <i class="fa-regular fa-star icon_star"></i>
-                                            </span>
-                                            <span class="user_rated-cmttime">2 ngày trước</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="products_cmt-bot">
-                                    <p>
-                                        Mô hình chất lượng kém quá rate 1 sao.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="body_container-item user_ratingproducts">
-                    <div class="user_ratingproducts-title">
-                        Đánh giá của bạn cho sản phẩm này
-                    </div>
-                    <div class="user_ratingproducts-content">
-                        <div class="user_ratingproducts-star">
-                            <span class="user_ratingproducts-star-title">Xếp hạng sản phẩm</span>
-                            <span>
-                                <i class="fa-regular fa-star icon_star"></i>
-                                <i class="fa-regular fa-star icon_star"></i>
-                                <i class="fa-regular fa-star icon_star"></i>
-                                <i class="fa-regular fa-star icon_star"></i>
-                                <i class="fa-regular fa-star icon_star"></i>
-                            </span>
-                        </div>
-                        <div class="user_ratingproducts-cmt">
-                            <span>Nhận xét của bạn</span> <br>
-                            <textarea rows="4" cols="50" class="user_ratingproducts-cmt-child">
-                            </textarea>
-                        </div>
-                        <button class="btn_submit">Gửi</button>
-                    </div>
-                </div>
-                <div class="body_container-item products_same">
-                    <div class="products_same-title">
-                        Sản phẩm tương tự
-                    </div>
-                    <div class="products_same-child">
-
-                        <c:forEach items="${requestScope.relativeproducts}" var="rp">
-                            <div class="products">
-                                <a href="pdetail?title=${rp.title}&gid=${rp.gender_id}&sid=1&cid=${rp.category_id}">
-                                    <img src="${rp.thumbnail}" alt="" class="img_products">
+                        <c:forEach items="${listbycate}" var="listc">
+                            <div class="products all_products">
+                                <a href="pdetail?title=${listc.title}&gid=${listc.gender_id}&sid=1&cid=${listc.category_id}">
+                                    <img src="${listc.thumbnail}" alt="" class="img_products">
                                 </a>
                                 <div class="describe_products">
                                     <div class="ratings_products">
-                                        <span>${rp.title}</span>
+                                        <span>${listc.title}</span>
                                         <span>
-                                            <i class="fa-solid fa-star icon_star"></i>
                                             <i class="fa-solid fa-star icon_star"></i>
                                             <i class="fa-solid fa-star icon_star"></i>
                                             <i class="fa-solid fa-star icon_star"></i>
                                             <i class="fa-solid fa-star icon_star"></i>
                                         </span>
                                         <div>
-                                            <span class="info_price">${rp.price_out} đ</span>
-
+                                            <span class="info_price">${listc.price_out}</span>
                                         </div>
                                     </div>
                                     <div class="add_like_products">
@@ -386,10 +209,30 @@
                                 </div>
                             </div>
                         </c:forEach>
+
                     </div>
+                    <div class="page_button">
+                        <ul class="page_button_container">
+                            <li class="page_button-child">
+                                <i class="fa-solid fa-angle-left"></i>
+                            </li>
+                            <li class="page_button-child page_button-current"><span>1</span></li>
+                            <li class="page_button-child"><span>2</span></li>
+                            <li class="page_button-child"><span>3</span></li>
+                            <li class="page_button-child"><span>4</span></li>
+                            <li class="page_button-child"><span>5</span></li>
+                            <li class="page_button-child">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- <div class="body_container-page">
+        
+                    </div> -->
                 </div>
             </div>
         </div>
+
         <!-- end body -->
 
         <!-- footer -->
@@ -499,8 +342,4 @@
         </div>
         <!-- end footer -->
     </body>
-
-    <!--     <script type="text/javascript">
-                importScripts('https://www.gstatic.com/recaptcha/releases/gEr-ODersURoIfof1hiDm7R5/recaptcha__en.js');
-            </script>-->
 </html>

@@ -181,7 +181,51 @@ public class ProductDAO extends DBContext {
         return null;
     }
 
-    public Product getProductBySize(String title, int sid) {
+//    public Product getProductSize(String title) {
+//        String sql = "SELECT [id]\n"
+//                + "      ,[category_id]\n"
+//                + "      ,[title]\n"
+//                + "      ,[gender_id]\n"
+//                + "      ,[price_in]\n"
+//                + "      ,[price_out]\n"
+//                + "      ,[discount_id]\n"
+//                + "      ,[thumbnail]\n"
+//                + "      ,[description]\n"
+//                + "      ,[size_id]\n"
+//                + "      ,[quantity]\n"
+//                + "      ,[created_at]\n"
+//                + "      ,[updated_at]\n"
+//                + "  FROM [SWP].[dbo].[Products]\n"
+//                + "  where title=? ";
+//        try {
+//            PreparedStatement st = connection.prepareStatement(sql);
+//            st.setString(1, title);
+//            
+//            ResultSet rs = st.executeQuery();
+//            if (rs.next()) {
+//                Product c = new Product();
+//                c.setId(rs.getInt("id"));
+//                c.setCategory_id(rs.getInt("category_id"));
+//                c.setTitle(rs.getString("title"));
+//                c.setGender_id(rs.getInt("gender_id"));
+//                c.setPrice_in(rs.getInt("price_in"));
+//                c.setPrice_out(rs.getInt("price_out"));
+//                c.setDiscount_id(rs.getInt("discount_id"));
+//                c.setThumbnail(rs.getString("thumbnail"));
+//                c.setDescription(rs.getString("description"));
+//                c.setSize_id(rs.getInt("size_id"));
+//                c.setQuantity(rs.getInt("quantity"));
+//                c.setCreated_at(rs.getDate("created_at"));
+//                c.setCreated_at(rs.getDate("updated_at"));
+//                return c;
+//            }
+//        } catch (SQLException e) {
+//            System.out.println(e);
+//        }
+//        return null;
+//    }
+    public List<Product> getProductSize(String title) {
+        List<Product> ls = new ArrayList<>();
         String sql = "SELECT [id]\n"
                 + "      ,[category_id]\n"
                 + "      ,[title]\n"
@@ -196,13 +240,12 @@ public class ProductDAO extends DBContext {
                 + "      ,[created_at]\n"
                 + "      ,[updated_at]\n"
                 + "  FROM [SWP].[dbo].[Products]\n"
-                + "  where title=? and size_id=?";
+                + "  where title=? ";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, title);
-            st.setInt(2, sid);
             ResultSet rs = st.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 Product c = new Product();
                 c.setId(rs.getInt("id"));
                 c.setCategory_id(rs.getInt("category_id"));
@@ -217,12 +260,49 @@ public class ProductDAO extends DBContext {
                 c.setQuantity(rs.getInt("quantity"));
                 c.setCreated_at(rs.getDate("created_at"));
                 c.setCreated_at(rs.getDate("updated_at"));
-                return c;
+
+                ls.add(c);
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return null;
+        return ls;
+    }
+
+    public List<Product> getProductByCategory(int cid) {
+        List<Product> ls = new ArrayList<>();
+        String sql = "SELECT \n"
+                + "	[title],\n"
+                + "		category_id,\n"
+                + "		[gender_id]\n"
+                + "		,min(price_out) as price\n"
+                + "		,[thumbnail]\n"
+                + "	FROM [SWP].[dbo].[Products] p join Categories c \n"
+                + "	on  c.id = p.category_id \n"
+                + "	where c.id=? \n"
+                + "	group by [title]\n"
+                + "		, category_id\n"
+                + "		, gender_id\n"
+                + "		,[thumbnail]";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, cid);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Product c = new Product();
+                c.setGender_id(rs.getInt("gender_id"));
+                c.setSize_id(1);
+                c.setCategory_id(rs.getInt("category_id"));
+                c.setTitle(rs.getString("title"));
+                c.setPrice_out(rs.getInt("price"));
+                c.setThumbnail(rs.getString("thumbnail"));
+
+                ls.add(c);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return ls;
     }
 
     public Product getProductValue(String thumbnail, int sid) {
@@ -327,7 +407,7 @@ public class ProductDAO extends DBContext {
         PreparedStatement st = connection.prepareStatement(sql);
         st.setString(1, title);
         st.setInt(2, gid);
-       
+
         ResultSet rs = st.executeQuery();
 
         while (rs.next()) {
@@ -960,6 +1040,7 @@ public class ProductDAO extends DBContext {
 //        }
 
 //        System.out.println(d.getProductByTitle("Nước hoa Morra 2AM"));
+        System.out.println(d.getProductByCategory(Integer.parseInt("1")));
     }
 
 }
